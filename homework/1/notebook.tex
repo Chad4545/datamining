@@ -280,6 +280,9 @@
     
 
     
+    \section{201111774 응용통계학과
+박성진}\label{uxc751uxc6a9uxd1b5uxacc4uxd559uxacfc-uxbc15uxc131uxc9c4}
+
     \subsection{(Homework)}\label{homework}
 
 \subsubsection{Search the origin of the word "regression" by googling
@@ -342,6 +345,53 @@ model}\label{interpretation-of-the-model}
 
     \subsubsection{1. 3 .1 Centering/ scaling /
 standardization}\label{centering-scaling-standardization}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsubsection{\texorpdfstring{\textbf{Centering} \(x\) often helps the
+interpretation, here centering implies
+subsituting}{Centering x often helps the interpretation, here centering implies subsituting}}\label{centering-x-often-helps-the-interpretation-here-centering-implies-subsituting}
+
+\[z = x - \mu_x\]
+
+\begin{itemize}
+\tightlist
+\item
+  for \(x\), where \(\mu_x = E(x)\) so that the model becomes
+\end{itemize}
+
+\[ y=f(x)+\epsilon = B_0 + B_1x +\epsilon \iff y = g(z) = \alpha_0 + \alpha_1z + \epsilon\]
+
+\begin{itemize}
+\tightlist
+\item
+  model \(g(z)\): conditional expectation of \(y \,given\,z\)
+\end{itemize}
+
+\[ g(z) = \alpha_0 + \alpha_1z \]
+
+    \begin{itemize}
+\tightlist
+\item
+  intercept \(\alpha_0\) : conditional mean of y given
+  \(z=0 \iff x = \mu_x\)
+
+  \begin{eqnarray}
+  \alpha_0 &=& E(y|z=0) \\
+  &=& E(y|x=\mu_x) \\
+  &=&B_0 + B_1\mu_x
+  \end{eqnarray}
+\item
+  slope \(\alpha_1\): difference between two conditional expectations
+\end{itemize}
+
+\begin{eqnarray}
+    \alpha_1 &=& E(y|z=k+1) - E(y|z=k)\\
+       &=&E(y|x=\mu_x+k+1) - E(y|x=\mu_x+k)\\
+       &=& B_1
+\end{eqnarray}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \subsubsection{\texorpdfstring{\textbf{Scaling} \(x\) implies
 subsituting}{Scaling x implies subsituting}}\label{scaling-x-implies-subsituting}
