@@ -1,4 +1,4 @@
-setwd("homework/3")
+setwd("../homework/3")
 getwd()
 # data load 
 # train_data
@@ -75,7 +75,9 @@ rst.mat
 
 # grid search for [L1] & Huber
 L1.mat = matrix(NA,3,100)
-rownames(L1.mat)=c("Tau","AIC","Prediction")
+
+rownames(L1.mat)=c("Tau","AIC","error")
+L1.mat
 # tau 
 tau.tune=seq(0,1,length.out = 100)
 
