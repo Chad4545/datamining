@@ -32,10 +32,12 @@ forward.fun = function(xy.df,mod=c("adj","aic","bic","ind","cross"),ratio=0.3,n.
       ny = predict(lm.fit,newdata=xy.df[ind.id,d.set])  
       e.vec=c(e.vec,mean(abs(ny-xy.df[ind.id,1])))
     }
+    
     if (mod=="crs"){
       cv_err = 0
       for(k in 1:n.fold){
         temp_fold=crs.id[[k]]
+        
         lm.fit = lm(y~.,data=xy.df[-temp_fold,d.set])
         ny = predict(lm.fit,newdata=xy.df[temp_fold,d.set])  
         cv_err = cv_err + mean(abs(ny-xy.df[temp_fold,1]))
@@ -63,25 +65,24 @@ forward.fun = function(xy.df,mod=c("adj","aic","bic","ind","cross"),ratio=0.3,n.
     print(iid)
     a.set = c(a.set,c.set[opt])
     c.set = c.set[-opt] ;e.vec = NULL
+    
     for(id in c.set){
       d.set = c(1,a.set,id)
+      cv_err = 0
       if (mod=="ind"){
         lm.fit = lm(y~.,data=xy.df[-ind.id,d.set])
         ny = predict(lm.fit,newdata=xy.df[ind.id,d.set])  
         e.vec=c(e.vec,mean(abs(ny-xy.df[ind.id,1])))
       }
       if (mod=="crs"){
-        cv_err = 0
         for(k in 1:n.fold){
           temp_fold=crs.id[[k]]
-          
-          ny = predict(lm.fit,newdata=xy.df[temp_fold,d.set])  
           lm.fit = lm(y~.,data=xy.df[-temp_fold,d.set])
           ny = predict(lm.fit,newdata=xy.df[temp_fold,d.set])  
           cv_err = cv_err + mean(abs(ny-xy.df[temp_fold,1]))
-          
         }
         e.vec=c(e.vec,cv_err)
+        print(e.vec)
       }
       
       
@@ -102,7 +103,7 @@ forward.fun = function(xy.df,mod=c("adj","aic","bic","ind","cross"),ratio=0.3,n.
     if(e.opt<min(e.vec)) break
     e.opt = min(e.vec)
   }
-  
+
   return(a.set)
 }
 

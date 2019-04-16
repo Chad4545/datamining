@@ -9,13 +9,10 @@ xy.df = rbind(xy.df,nxy.df)
 n = dim(xy.df)[1];p = dim(xy.df)[2] # 6
 cv.id = split(sample(1:n),1:5)
 
-#xy.df = xy.df[,1:6]
-#nxy.df = nxy.df[,1:6]
-
 head(xy.df) # sensitivity/ type/ pressure/V1/V2V3
 
 p = dim(xy.df)[2] # 6
-
+p
 a.set = NULL  #active set : 현재 모형에 포함되어야 하는 변수의 셋
 c.set = 2:p # 추가할 대상이 되는 변수의 셋/ 1은 종속변수니깐
 ############################################################################
