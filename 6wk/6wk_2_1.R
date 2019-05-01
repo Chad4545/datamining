@@ -1,3 +1,4 @@
+rm(list=ls())
 getwd()
 setwd("/Users/sungjinpark/Desktop/OneDrive - konkuk.ac.kr/datamining/6wk")
 #1. data load

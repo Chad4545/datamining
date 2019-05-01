@@ -1,11 +1,12 @@
 setwd("../homework/3")
 getwd()
+rm(list=ls())
 # data load 
 # train_data
-df<-read.csv(file="old.sam.for.reg.fit.csv")
+df<-read.csv(file="../../old.sam.for.reg.fit.csv")
 tr.df = df[,c(1,4)]
 #test_data
-test.df<-read.csv(file="old.sam.for.reg.pred.csv")
+test.df<-read.csv(file="../../old.sam.for.reg.pred.csv")
 te.df =test.df[,c(1,4)]
 # result matrix
 rst.mat = matrix(NA,2,3)
@@ -29,6 +30,7 @@ lm.fit = lm(formula = sensitivity~V1,data=tr.df)
 rq.fit=rq(formula = sensitivity~V1,data=tr.df)
 #Huber
 rb.fit=robustRegH(formula = sensitivity~V1,data=tr.df)
+rb.fit
 #######################################################################
 
 
@@ -37,16 +39,18 @@ rb.fit=robustRegH(formula = sensitivity~V1,data=tr.df)
 # implement AIC and Scaled Error
 aic.fun <- function(loss){
   sse = sum((loss)^2)
-  return(log(sse/length(loss))+2*2/length(loss))
+  return(log(sse/length(loss)) + 2*2/length(loss))
 }
 
 scaled_error.fun <- function(loss){
   sqrt(sum((loss)^2)/length(loss))
-  
 }
 
 #L2
+
 test_pred=cbind(1,te.df[,2])%*%coef(lm.fit) #pred 값
+test_pred
+
 loss=te.df[,1]-test_pred                    # 실제값 - pred값 : loss
 aic.lm = aic.fun(loss)
 scaled_error=scaled_error.fun(loss)
@@ -54,6 +58,7 @@ scaled_error=scaled_error.fun(loss)
 rst.mat[1,1]=aic.lm
 rst.mat[2,1]=scaled_error
 rst.mat    
+
 #L1
 test_pred=cbind(1,te.df[,2])%*%coef(rq.fit)
 loss=te.df[,1]-test_pred
@@ -65,6 +70,7 @@ rst.mat[2,2]=scaled_error
 rst.mat    
 #Huber
 test_pred=cbind(1,te.df[,2])%*%coef(rb.fit)
+test_pred
 loss=te.df[,1]-test_pred
 aic.hub = aic.fun(loss)
 scaled_error=scaled_error.fun(loss)

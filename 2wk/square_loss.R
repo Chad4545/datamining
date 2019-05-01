@@ -1,4 +1,5 @@
 getwd()
+rm(list=ls())
 setwd('2wk')
 # 2019.03.11 데이터마이닝
 # square loss for simple linear regression 
@@ -12,6 +13,8 @@ b.vec = c(-1,1)
 
 
 x.mat
+b.vec
+y.vec
 x.mat %*% b.vec
 
 y.vec - x.mat %*% b.vec 
@@ -29,12 +32,17 @@ sq.loss.fun(y.vec, x.vec, b.vec) #34
 sq.loss.fun(y.vec, x.vec, b.vec=c(1,1)) #38
 
 # 어떤 loss가 가장 작을까?
-
+x.vec
 sxx = sum((x.vec - mean(x.vec))^2)
+sxx
 sxy = (x.vec - mean(x.vec))*(y.vec - mean(y.vec))
+sxy
 sx = (x.vec - mean(x.vec))
+sx
 sy = (y.vec - mean(y.vec))
+sy
 sxy = sum(sx*sy)
+sxy
 
 b.vec = c(NA,NA)
 b.vec[2] = sxx/sxy

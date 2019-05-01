@@ -1,6 +1,7 @@
 getwd()
 setwd('3wk')
-
+rm(list=ls())
+library(MASS)
 # linear regression test
 
 # 제조공정관리데이터
@@ -14,7 +15,7 @@ setwd('3wk')
 # 강의노트 11페이지 
 # data load
 
-df<-read.csv(file="old.sam.for.reg.fit.csv")
+df<-read.csv(file="../old.sam.for.reg.fit.csv")
 hist(df$sensitivity)
 y.vec = df[,1] # target
 x.vec = df[,4] # 설명변수 1
@@ -103,7 +104,8 @@ library(quantreg)
 rq.fit=rq(formula = sensitivity~V1,data=xy.df)
 rq.fit
 #rq(formula = sensitivity ~ V1, data = xy.df)
-
+names(rq.fit)
+rq.fit$coefficients
 #Coefficients:
 #  (Intercept)          V1 
 #    -6.814326   -3.431738 
@@ -121,6 +123,7 @@ library(robustreg)
 # m = 
 # max.it
 # tol
+?rlm
 rb.fit=robustRegH(formula = sensitivity~V1,data=xy.df)
 names(rb.fit) # "coefficients" "weights"      "mse" 
 rb.fit$coefficients
@@ -130,7 +133,7 @@ rb.fit$coefficients
 
 #############################################
 rst.mat # 결과 저장 매트릭스
-pred.df<-read.csv(file="old.sam.for.reg.pred.csv")
+pred.df<-read.csv(file="../old.sam.for.reg.pred.csv")
 head(pred.df)
 
 pred.xy.df =pred.df[,c(1,4)]
@@ -151,6 +154,8 @@ Prediction NA NA  NA
 
 ?coef()
 coef(lm.fit)
+lm.fit$coefficients
+
 cbind(1,pred.xy.df[,2])%*%coef(lm.fit)
 
 ny=pred.xy.df[,1]-cbind(1,pred.xy.df[,2])%*%coef(lm.fit)

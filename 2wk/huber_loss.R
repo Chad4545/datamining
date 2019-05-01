@@ -1,7 +1,7 @@
 ##3/13 수요일
 setwd('2wk')
 getwd()
-
+rm(list=ls())
 ## Huber loss function
 y.vec = rnorm(10) # vector
 x.vec = rnorm(10)
@@ -29,3 +29,5 @@ hub.fun = function(y.vec,x.vec,b.vec,del){
   return(loss)
 }
 #############################################
+
+

@@ -49,6 +49,8 @@ xy.df = as.data.frame(cbind(y.vec,x.vec))
 #xy.df
 b.vec=coef(lm(y.vec~.,data=xy.df))
 b.vec
+
+
 # 비슷하게 나옴 
 
 # 모델이 샘플 사이즈에 따라서 점점 수렴된다는 것을 수치화 하고 싶다 

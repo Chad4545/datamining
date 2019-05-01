@@ -1,8 +1,9 @@
+rm(list=ls())
 getwd()
 #setwd("/Users/sungjinpark/Desktop/OneDrive - konkuk.ac.kr/datamining/homework/4")
 # data
-xy.df = read.csv(file='../4/old.sam.for.reg.fit.csv')
-nxy.df = read.csv(file='../4/old.sam.for.reg.pred.csv')
+xy.df = read.csv(file='../../old.sam.for.reg.fit.csv')
+nxy.df = read.csv(file='../../old.sam.for.reg.pred.csv')
 
 ###
 colnames(xy.df)

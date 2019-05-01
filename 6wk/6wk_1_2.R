@@ -1,4 +1,5 @@
 # 4/8(월)
+rm(list=ls())
 getwd()
 setwd("/Users/sungjinpark/Desktop/OneDrive - konkuk.ac.kr/datamining/6wk")
 ############################################################################

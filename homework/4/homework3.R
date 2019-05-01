@@ -12,6 +12,7 @@
 '''
 set.seed(1)
 library(caret)
+rm(list=ls())
 '''
 p = 사용할 설명변수의 갯수
 n = 사용할 데이터의 수 
@@ -21,7 +22,7 @@ ratio = train/test 비율 (default 8:2)
 p 를 1에서 100 까지 늘려본다.
 '''
 
-make_train_test = function(p,n=10000,,ratio=0.8){
+make_train_test = function(p,n=10000,ratio=0.8){
   b.vec = 1/(1:p)
   x.mat = matrix(rnorm(n*p),ncol=p)
   y.vec = x.mat%*%b.vec + rnorm(n) # 마지막텀은 오차 
@@ -32,7 +33,7 @@ make_train_test = function(p,n=10000,,ratio=0.8){
   test <- xy.df[-a,]
   return(list(train=train, test=test,beta=b.vec))
 }
-?rnorm
+
 
 
 

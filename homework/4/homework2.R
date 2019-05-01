@@ -11,8 +11,8 @@
 1. 변수의 갯수에 따른 비교 
 '''
 set.seed(1)
-
-
+rm(list=ls())
+?rnorm
 make_data = function(p=10,n=10000,df_value=1){
   b.vec = 1/(1:p)
   x.mat = matrix(rnorm(n*p),ncol=p)

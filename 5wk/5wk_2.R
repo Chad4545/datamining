@@ -1,9 +1,11 @@
 # 2019.04.03 수 
 getwd()
 setwd("/Users/sungjinpark/Desktop/OneDrive - konkuk.ac.kr/datamining/5wk")
-xy.df = read.csv('old.sam.for.reg.fit.csv')
-nxy.df = read.csv('old.sam.for.reg.pred.csv')
+xy.df = read.csv('../old.sam.for.reg.fit.csv')
+nxy.df = read.csv('../old.sam.for.reg.pred.csv')
 
+
+rm(list=ls())
 num_variables = dim(xy.df)[2] - 1 # 설명변수의 개수 20개
 result_error = matrix(NA,3,num_variables) # 결과 매트릭스
 rownames(result_error)=c("Num of Variables","selected Variables","pred_error")

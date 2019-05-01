@@ -10,6 +10,7 @@ lm(diab~.,data=diab.df)$coef
 
 ##### least square estimator
 x.mat <- cbind(1,as.matrix(diabetes$x)); y.vec <- as.vector(diabetes$y)
+x.mat
 #손계산
 # solve == 역행렬, drop 은 약간 flatten 느낌
 drop(solve(t(x.mat)%*%x.mat)%*%t(x.mat)%*%y.vec)
